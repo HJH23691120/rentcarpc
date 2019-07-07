@@ -7,6 +7,8 @@
 
 4、个人页面以以及图片放在src里面，命名规则。以自己名字首字母缩写开头，请尽量避免出现一堆index.vue的情况
 
+5、晚上七点之后再提交文件，请确认无误再提交
+
 git操作部分，远程更新文件
 
 1：git remote add HJH23691120 https://github.com/HJH23691120/rentcarpc.git
