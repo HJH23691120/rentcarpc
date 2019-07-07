@@ -9,7 +9,7 @@
 
 git操作部分，远程更新文件
 
-1：git remote add HJH23691120 git@github.com:HJH23691120/rentcarpc.git
+1：git remote add HJH23691120 https://github.com/HJH23691120/rentcarpc.git
 
 
 2:git fetch HJH23691120
