@@ -12,6 +12,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import  Echart from './components/Echart/Echart.js'
 Vue.use(Echart);
 
+import qs from  'qs'
+Vue.prototype.$qs = qs;
 Vue.prototype.$axios = Axios
 Vue.config.productionTip = false
 Vue.use(ElementUI);
