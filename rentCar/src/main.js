@@ -7,6 +7,8 @@ import store from './vuex/index'
 import Axios from 'axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import qs from  'qs'
+Vue.prototype.$qs = qs;
 Vue.prototype.$axios = Axios
 Vue.config.productionTip = false
 Vue.use(ElementUI);
