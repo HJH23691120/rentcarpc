@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/cll_home/home'
 import Login from '../components/login.vue'
+import accept from '@/components/Toaccept/accept'
 
 Vue.use(Router)
 
@@ -26,7 +27,13 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,children:[
+         {
+          path:'accept',
+          name:'Accept',
+          component:accept
+        },
+      ]
     },
   ]
 })

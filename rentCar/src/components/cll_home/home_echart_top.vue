@@ -1,6 +1,6 @@
 <template>
   <div>
-      ho
+     
       <div id="chart1"></div>
   </div>
 </template>

@@ -7,11 +7,8 @@ import store from './vuex/index'
 import Axios from 'axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-
-// echart
 import  Echart from './components/Echart/Echart.js'
 Vue.use(Echart);
-
 import qs from  'qs'
 Vue.prototype.$qs = qs;
 Vue.prototype.$axios = Axios

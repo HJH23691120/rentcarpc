@@ -1,6 +1,6 @@
 <template>
   <div>
-      ha
+     
       <chartOne></chartOne>
   </div>
 </template>

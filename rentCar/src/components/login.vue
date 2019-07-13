@@ -66,7 +66,7 @@ export default {
     fn() {
       //这是提交按钮得函数
       if (this.user && this.pass) {
-        console.log("我已经被执行");
+
         this.$axios
           .post(
             "http://172.25.1.194:8080/user/login?",
@@ -80,7 +80,6 @@ export default {
           .then(res => {
             console.log(res.data);
             if (res.data) {
-              console.log("我即将跳转页面");
               this.$router.push('/home')
             }
           })

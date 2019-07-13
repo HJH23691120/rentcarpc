@@ -5,14 +5,14 @@
       <span>{{time}}</span>
     </p>
     <div class="headright">
-      <a href="#">
+      <a href="#" @click.prevent="fn">
         <img src="./../assets/head/wei.png" alt />
         <span class="wei">2</span>
       </a>
-      <a href="#">
+      <router-link to="/home/accept">
         <img src="./../assets/head/xiaoxi.png" alt />
         <span class="info">2</span>
-      </a>
+      </router-link>
       <a href="#">
         <img src="./../assets/head/shezhi.png" alt />
       </a>
@@ -24,6 +24,7 @@
         <img src="./../assets/head/fanhui.png" alt />
       </a>
     </div>
+   
   </div>
 </template>
 
@@ -32,10 +33,16 @@ export default {
   data() {
     return {
       year: "",
-      time: ""
+      time: "",
+      weishow:false,
     };
   },
-  methods: {},
+  methods: {
+    fn(){
+      this.weishow=true;
+      this.$store.commit("change", this.weishow);
+    }
+  },
   components: {},
 
   mounted() {
@@ -60,7 +67,7 @@ export default {
 
 <style scoped lang='less'>
 .header {
-  width: 100%;
+  
   min-width: 900px;
   height: 63px;
   background: #f9c307;
@@ -122,5 +129,6 @@ export default {
       }
     }
   }
+ 
 }
 </style>
