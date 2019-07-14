@@ -27,17 +27,20 @@
               </span>
             </div>
           </template>
+           <el-menu-item index="2-5 ">
+            <router-link to="/home/management">订单管理</router-link>
+          </el-menu-item>
           <el-menu-item index="2-1">
-            <router-link to="/home/accept">待受理</router-link>
+            <router-link to="/home/shouli">待受理</router-link>
           </el-menu-item>
           <el-menu-item index="2-2">
-            <router-link to="#2-2">待结算</router-link>
+            <router-link to="/home/accept">待结算</router-link>
           </el-menu-item>
           <el-menu-item index="2-3">
-            <router-link to="#2-3">验车 结算</router-link>
+            <router-link to="/home/vali">验车 结算</router-link>
           </el-menu-item>
           <el-menu-item index="2-4">
-            <router-link to="#2-4">已结算</router-link>
+            <router-link to="/home/cleared">已结算</router-link>
           </el-menu-item>
         </el-submenu>
         <el-menu-item index="3">
@@ -83,7 +86,6 @@ export default {
   },
   mounted() {
     let li = document.getElementsByClassName("el-menu-item");
-    console.log(li);
     for (let i = 0; i < li.length; i++) {
       li[i].style.padding = 0;
     }

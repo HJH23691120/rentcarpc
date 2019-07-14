@@ -91,6 +91,9 @@
         </ul>
       </div>
     </div>
+    <p class="copy">
+      Copyright@2014-2019   沪ICP备  12345678号
+    </p>
   </div>
 </template>
 
@@ -195,6 +198,19 @@ div {
         }
       }
     }
+  }
+  .copy{
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-family: MicrosoftYaHei;
+	font-size: 10px;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 16px;
+	letter-spacing: 1px;
+	color: #535353;
   }
 }
 </style>
