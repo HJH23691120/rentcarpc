@@ -42,44 +42,12 @@
           <span>取车时间</span>
           <span>还车时间</span>
           <span>订单状态</span>
-          <span><span>受理</span><span>删除</span></span>
-        </li>
-        <li>
           <span>
-            <span></span>姓名
+            <span>受理</span>
+            <span>删除</span>
           </span>
-          <span>手机号</span>
-          <span>租赁方式</span>
-          <span>车型</span>
-          <span>取车时间</span>
-          <span>还车时间</span>
-          <span>订单状态</span>
-          <span>操作</span>
         </li>
-        <li>
-          <span>
-            <span></span>姓名
-          </span>
-          <span>手机号</span>
-          <span>租赁方式</span>
-          <span>车型</span>
-          <span>取车时间</span>
-          <span>还车时间</span>
-          <span>订单状态</span>
-          <span>操作</span>
-        </li>
-        <li>
-          <span>
-            <span></span>姓名
-          </span>
-          <span>手机号</span>
-          <span>租赁方式</span>
-          <span>车型</span>
-          <span>取车时间</span>
-          <span>还车时间</span>
-          <span>订单状态</span>
-          <span>操作</span>
-        </li>
+       
       </ul>
     </div>
   </div>
@@ -215,34 +183,33 @@ export default {
         }
       }
     }
-    .lists{
+    .lists {
       margin-top: 25px;
-     li{
-       margin-bottom: 27px;
-      display: flex;
-      span {
-        flex: 1;
-        text-align: center;
-        &:nth-child(1) {
-          span {
-            display: block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 1px solid #666666;
-            float: left;
+      li {
+        margin-bottom: 27px;
+        display: flex;
+        span {
+          flex: 1;
+          text-align: center;
+          &:nth-child(1) {
+            span {
+              display: block;
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              border: 1px solid #666666;
+              float: left;
+            }
           }
-        }
-        &:nth-child(8){
-          span{
-            font-size: 10px;
-		line-height: 16px;
-	letter-spacing: 1px;
-
+          &:nth-child(8) {
+            span {
+              font-size: 10px;
+              line-height: 16px;
+              letter-spacing: 1px;
+            }
           }
         }
       }
-     }
     }
   }
 }
