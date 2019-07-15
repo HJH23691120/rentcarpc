@@ -7,11 +7,8 @@ import accept from '@/components/Toaccept/accept'//待结算
 import vali from '@/components/valicar/vali.vue'//验车
 import shouli from '@/components/shouli/shouli.vue'//受理
 import management from '@/components/management/management.vue'//受理
-
 import cleared from '@/components/cleared/cleared.vue'//结算
-
 Vue.use(Router)
-
 export default new Router({
   routes: [
     // {

@@ -20,7 +20,7 @@
         <span>退款时间</span>
         <span>退款人</span>
       </header>
-      <ul class="list">
+      <ul class="list" @click="open($event)">
         <li>
           <span>张三</span>
           <span>18336093166</span>
@@ -72,17 +72,32 @@ export default {
         }
       },
       value1: "",
-      value2: ""
+      value2: "",
+      clearedshow:false
     };
   },
 
   methods: {
-    data(){
-      console.log("我是用来提交时间的")
+    data() {
+      console.log("我是用来提交时间的");
+    },
+    open(e) {
+    
+
+   
+      console.log(e.target)
+        //防止父元素ul也触发事件
+        console.log(1);
+        if (e.target.parentNode.localName == "li") {
+          this.clearedshow = true;
+          console.log(2);
+          this.$store.commit("open", this.clearedshow);
+       
+       
+      };
     }
   },
-  components: {},
-
+  components: {}
 };
 </script >
 
@@ -113,21 +128,19 @@ export default {
         line-height: 16px;
         letter-spacing: 1px;
         color: #333333;
-        .el-date-editor.el-input{
+        .el-date-editor.el-input {
           width: 87px;
         }
-          .el-input--prefix/deep/.el-input__inner{
-               width: 87px;
-            height: 24px;
-            padding: 0;
-           background-color: #fbf5e0;
-           border-radius: 0;
-          
-        
+        .el-input--prefix/deep/.el-input__inner {
+          width: 87px;
+          height: 24px;
+          padding: 0;
+          background-color: #fbf5e0;
+          border-radius: 0;
         }
-         .el-date-editor/deep/.el-input__icon::before{
-        
-          display: none;}
+        .el-date-editor/deep/.el-input__icon::before {
+          display: none;
+        }
       }
     }
   }
