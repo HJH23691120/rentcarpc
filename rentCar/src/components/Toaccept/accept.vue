@@ -81,6 +81,8 @@ export default {
   background: #fff;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 12px 1px 
+		rgba(21, 21, 21, 0.23);
   .accepttop {
     margin: 37px 0 0 28px;
     font-family: MicrosoftYaHei;
@@ -96,91 +98,61 @@ export default {
     header {
       height: 38px;
       line-height: 38px;
+      display: flex;
+      
       span {
+        flex: 1;
         font-family: MicrosoftYaHei;
         font-size: 16px;
         font-weight: normal;
         font-stretch: normal;
-
         letter-spacing: 2px;
         color: #333333;
         text-align: center;
         display: inline-block;
-        &:nth-child(1) {
-          width: 48px;
-          text-align: left;
-        }
-        &:nth-child(2) {
-          width: 120px;
-        }
-        &:nth-child(3) {
-          width: 72px;
-        }
-        &:nth-child(4) {
-          width: 108px;
-        }
-        &:nth-child(5) {
-          width: 106px;
-        }
-        &:nth-child(6) {
-          width: 174px;
-        }
-        &:nth-child(7) {
-          width: 144px;
-        }
+ &:nth-child(1) {
+            width: 5.6%;
+            min-width: 48px;
+            text-align: left;
+          }
       }
     }
     .list {
       li {
             height: 38px;
           line-height: 38px;
+          display: flex;
         span {
-        
-        //   vertical-align: middle;
+        flex: 1;
+     
           display: inline-block;
           text-align: center;
           font-size: 12px;
           font-weight: normal;
           font-stretch: normal;
-          line-height: 16px;
+          line-height: 38px;
           letter-spacing: 1px;
           color: #333333;
           &:nth-child(1) {
-            width: 48px;
+           
             text-align: left;
           }
-          &:nth-child(2) {
-            width: 120px;
-          }
-          &:nth-child(3) {
-            width: 72px;
-          }
-          &:nth-child(4) {
-            width: 108px;
-
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            // overflow: hidden;
-          }
-          &:nth-child(5) {
-            width: 106px;
-          }
-          &:nth-child(6) {
-            width: 174px;
-          }
+         
           &:nth-child(7) {
-            width: 144px;
+            min-width: 144px;
+            width: 16.9%;
            
             span{
                 height: 14px;
+                line-height: 14px;
                 border-radius: 6px;
                 font-size: 12px;
-        
+                text-align: center;
                 &:nth-child(1){
-                    width: 46px;background-color: #ffcc00;color: #333333;margin-right: 5px;
+                    width: 31.9%;min-width: 46px;background-color: #ffcc00;color: #333333;margin-right: 5px;
                 }
                 &:nth-child(2){
-                    width: 36px;background-color: #009944;color: #fff;
+                    width: 25%;;min-width: 36px;background-color: #009944;color: #fff;
                 }
             }
           }

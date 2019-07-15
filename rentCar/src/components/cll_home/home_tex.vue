@@ -52,28 +52,28 @@
     <div class="tex_bottom">
       <chartTwo></chartTwo>
       <div class="tex_bottom__r">
-        <h2>热门车型排名<span>本月</span></h2>
+        <h2>热门车型排名<span class="right">本月</span></h2>
         <ul>
           <li>
-            荣威550 top1 <span>10次</span>
+            荣威550 top1 <span class="right">10次</span>
           </li>
           <li>
-            大众朗逸 <span>8次</span>
+            大众朗逸 <span class="right">8次</span>
           </li>
           <li>
-            荣威rex5 <span>7次</span>
+            荣威rex5 <span class="right">7次</span>
           </li>
           <li>
-            大众斯柯达... <span>5次</span>
+            大众斯柯达... <span class="right">5次</span>
           </li>
           <li>
-            标致301 <span>5次</span>
+            标致301 <span class="right">5次</span>
           </li>
           <li>
-            大众高尔夫... <span>4次</span>
+            大众高尔夫... <span class="right">4次</span>
           </li>
           <li>
-            上汽打大通 <span>3次</span>
+            上汽打大通 <span class="right">3次</span>
           </li>
         </ul>
       </div>
@@ -195,11 +195,45 @@ export default {
     width: 100%;
     min-width: 800px;
     height: 370px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     .tex_bottom__r{
+      padding: 13px 25px 7px 13px;
+      margin-left: 34px;
       width: 30%;
       min-width: 271px;
       height: 370px;
       background: white;
+      h2{
+        padding: 4px 0;
+        font-size: 18px;
+        font-weight: 400;
+        overflow: hidden;
+        span{
+          color: #666;
+          padding-right: 10px;
+          background: url('../../assets/hometex/jiantou2.png') no-repeat right center;
+        }
+      }
+      ul{
+        li{
+          padding-top: 24px; 
+          padding-left:31px; 
+          overflow: hidden;
+          font-size: 19xpx;
+          &:nth-of-type(1){
+            color: red;
+            background: url('../../assets/hometex/4-1.png') no-repeat left bottom; 
+          }
+          &:nth-of-type(2){
+            background: url('../../assets/hometex/4-2.png') no-repeat left bottom ;
+          }
+          span{
+            color: #666;
+            }
+        }
+      }
     }
   }
 }

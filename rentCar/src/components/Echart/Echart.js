@@ -19,14 +19,15 @@ const install = function (Vue) {
                             legend: {
                                 orient: 'vertical',
                                 x: '60%',
-                                y: 'center',
+                                y: '40%',
                             },
                             series: [
                                 {
                                     name: '今日车辆数据',
                                     type: 'pie',
-                                    radius: ['40%', '70%'],
-                                    center: ['30%', '50%'],
+                                    radius: ['45%', '70%'],
+                                    // 饼图的位置
+                                    center: ['30%', '55%'],
                                     avoidLabelOverlap: false,
                                     itemStyle: {
                                         normal: {
@@ -49,7 +50,7 @@ const install = function (Vue) {
                                         emphasis: {
                                             show: true,
                                             textStyle: {
-                                                fontSize: '10',
+                                                fontSize: '14',
                                                 fontWeight: 'bold'
                                             }
                                         }
@@ -112,7 +113,7 @@ const install = function (Vue) {
                         this.chart.setOption(optionData);
                     },
                     // 柱形图
-                    line3: function (id, dataX,dataY) {
+                    line3: function (id, dataX, dataY) {
                         this.chart = echarts.init(document.getElementById(id));
                         this.chart.clear();
 
@@ -124,12 +125,16 @@ const install = function (Vue) {
                                 }
                             },
                             legend: {
-                                data: ['二七区店', '惠济区店', '金水区店']
+                                data: ['二七区店', '惠济区店', '金水区店'],
+                                orient: 'vertical',
+                                x: '90%',
+                                y: 'center',
                             },
                             grid: {
-                                left: '3%',
-                                right: '4%',
-                                bottom: '3%',
+                                left: '4%',
+                                right: '12%',
+                                top: '20%',
+                                bottom: '4%',
                                 containLabel: true
                             },
                             xAxis: [
@@ -140,7 +145,9 @@ const install = function (Vue) {
                             ],
                             yAxis: [
                                 {
-                                    type: 'value'
+                                    type: 'value',
+                                    min: 0,
+                                    max: 100
                                 }
                             ],
                             series: dataY

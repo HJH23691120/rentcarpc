@@ -3,10 +3,7 @@
     <div id="chart2"></div>
     <p>
       各门店租车量走势
-      <span class="chart_can">
-        二季度
-        <img src="../../assets/hometex/jiantou2.png" alt />
-      </span>
+      <span class="chart_can">二季度</span>
     </p>
   </div>
 </template>
@@ -73,11 +70,8 @@ export default {
       font-size: 12px;
       float: right;
       color: grey;
-      img {
-        width: 10px;
-        height: 6px;
-        background: #666;
-      }
+      padding-right:10px;
+      background: url('../../assets/hometex/jiantou2.png') no-repeat right center; 
     }
   }
 }

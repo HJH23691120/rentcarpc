@@ -9,7 +9,7 @@
         <img src="./../assets/head/wei.png" alt />
         <span class="wei">2</span>
       </a>
-      <router-link to="/home/accept">
+      <router-link to="/home/shouli">
         <img src="./../assets/head/xiaoxi.png" alt />
         <span class="info">2</span>
       </router-link>
