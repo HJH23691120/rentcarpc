@@ -226,10 +226,41 @@
       </div>
     </div>
     <div class="masking" v-show="$store.state.phoneshow">
-      <div class="clearedbox"></div>
+      <div class="phonebox">
+        <button @click="phonechange">
+          <img src="./../../assets/masking/guanbi.png" alt />
+        </button>
+        <div>
+          <p>
+            原手机号：
+            <input type="text" />
+          </p>
+          <p>
+            新手机号：
+            <input type="text" />
+          </p>
+          <p>
+            <span>确定</span>
+          </p>
+        </div>
+      </div>
     </div>
     <div class="masking" v-show="$store.state.recharge">
-      <div class="clearedbox"></div>
+      <div class="rechargebox">
+        <button @click="recharge">
+          <img src="./../../assets/masking/guanbi.png" alt />
+        </button>
+        <div>
+          <p>
+            金额：
+            <input type="text" />
+          </p>
+        
+          <p>
+            <span>充值</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -396,6 +427,88 @@ export default {
             p {
               margin-bottom: 25px;
             }
+          }
+        }
+      }
+    }
+    .phonebox {
+      width: 51.5%;
+      height: 28.5%;
+      background: #fff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        background: none;
+        border: none;
+        outline: none;
+        width: 17px;
+        height: 17px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 38px;
+        input {
+          border: none;
+          outline: none;
+          border-bottom: 1px solid #000;
+        }
+        &:nth-child(3) {
+          text-align: center;
+          span {
+            display: inline-block;
+            width: 84px;
+            height: 21px;
+            line-height: 22px;
+            background-color: #f9c307;
+            border-radius: 11px;
+            font-size: 14px;
+            color: #333;
+          }
+        }
+      }
+    }
+    .rechargebox {
+      width: 51.5%;
+      height: 20.9%;
+      background: #fff;
+      position: relative;
+       display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        background: none;
+        border: none;
+        outline: none;
+        width: 17px;
+        height: 17px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 38px;
+        input {
+          border: none;
+          outline: none;
+          border-bottom: 1px solid #000;
+        }
+        &:nth-child(2) {
+          text-align: center;
+          span {
+            display: inline-block;
+            width: 84px;
+            height: 21px;
+            line-height: 22px;
+            background-color: #f9c307;
+            border-radius: 11px;
+            font-size: 14px;
+            color: #333;
           }
         }
       }
