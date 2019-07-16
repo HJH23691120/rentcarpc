@@ -175,7 +175,6 @@ export default {
         display: flex;
         span {
           flex: 1;
-
           display: inline-block;
           text-align: center;
           font-size: 12px;

@@ -125,7 +125,7 @@ export default {
   }
   .list {
     margin: 29px 0 0 49px;
-    .el-menu {
+    .el-menu {  overflow: hidden;
       .el-menu-item {
         height: 42px;
         padding-left: 0;
@@ -178,6 +178,7 @@ export default {
         .el-menu-item {
           margin: 0 0 0 49px;
           height: 30px;
+        
           a {
             font-family: MicrosoftYaHei;
             font-size: 14px;
