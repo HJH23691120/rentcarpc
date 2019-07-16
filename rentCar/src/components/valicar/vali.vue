@@ -195,7 +195,8 @@ export default {
   min-width: 905px;
   min-height: 583px;
   height: 77%;
-
+  display: flex;
+  flex-direction: row;
   div {
     background: #fff;
     min-width: 408px;

@@ -7,6 +7,7 @@
     <section>
       <Head></Head>
       <router-view></router-view>
+      <p class="copy">Copyright@2014-2019 沪ICP备 12345678号</p>
     </section>
     <div class="masking" v-show="$store.state.weishow">
       <div class="maskingbox">
@@ -101,58 +102,135 @@
               <img src="./../../assets/search/pic-1.jpg" alt />
             </div>
             <div class="clearedright">
-              <p>还车时间：<span></span></p>
-              <p>车辆是否损坏：<span></span></p>
-              <p>还车门店：<span></span></p>
+              <p>
+                还车时间：
+                <span></span>
+              </p>
+              <p>
+                车辆是否损坏：
+                <span></span>
+              </p>
+              <p>
+                还车门店：
+                <span></span>
+              </p>
             </div>
           </li>
           <li>
-            <div>租车人： <span></span></div>          
-            <div>使用费：<span></span></div>
+            <div>
+              租车人：
+              <span></span>
+            </div>
+            <div>
+              使用费：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>手机号：<span></span></div>          
-            <div>基本保险费费：<span></span></div>
+            <div>
+              手机号：
+              <span></span>
+            </div>
+            <div>
+              基本保险费费：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>租借时间：<span></span></div>
-            <div>超时费：<span></span></div>
+            <div>
+              租借时间：
+              <span></span>
+            </div>
+            <div>
+              超时费：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>租借车：<span></span></div>
-            <div>损坏费：<span></span></div>
+            <div>
+              租借车：
+              <span></span>
+            </div>
+            <div>
+              损坏费：
+              <span></span>
+            </div>
           </li>
           <li>
-              <div>租借类型：<span></span></div>
-            <div>违章处理费：<span></span></div>
+            <div>
+              租借类型：
+              <span></span>
+            </div>
+            <div>
+              违章处理费：
+              <span></span>
+            </div>
           </li>
           <li>
-               <div>租借门店：<span></span></div>
-            <div>参与优惠活动：<span></span></div>
+            <div>
+              租借门店：
+              <span></span>
+            </div>
+            <div>
+              参与优惠活动：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>租赁方式：<span></span></div>
-            <div>平价币抵扣：<span></span></div>
+            <div>
+              租赁方式：
+              <span></span>
+            </div>
+            <div>
+              平价币抵扣：
+              <span></span>
+            </div>
           </li>
           <li>
-             <div>购买保险：<span></span></div>
-            <div>积分抵扣：<span></span></div>
+            <div>
+              购买保险：
+              <span></span>
+            </div>
+            <div>
+              积分抵扣：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>支付押金：<span></span></div>
+            <div>
+              支付押金：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>支付金额：<span></span></div>
-            <div>退款金额：<span></span></div>
+            <div>
+              支付金额：
+              <span></span>
+            </div>
+            <div>
+              退款金额：
+              <span></span>
+            </div>
           </li>
           <li>
-            <div>支付类型：<span></span></div>
-            <div>退款人：<span></span></div>
+            <div>
+              支付类型：
+              <span></span>
+            </div>
+            <div>
+              退款人：
+              <span></span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
-    <p class="copy">Copyright@2014-2019 沪ICP备 12345678号</p>
+    <div class="masking" v-show="$store.state.phoneshow">
+      <div class="clearedbox"></div>
+    </div>
+    <div class="masking" v-show="$store.state.recharge">
+      <div class="clearedbox"></div>
+    </div>
   </div>
 </template>
 
@@ -173,6 +251,12 @@ export default {
     },
     clearedclose() {
       this.$store.commit("open", this.clearedshow);
+    },
+    phonechange() {
+      this.$store.commit("pchange");
+    },
+    recharge() {
+      this.$store.commit("recharge");
     }
   },
   components: {
@@ -184,7 +268,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-div {
+.box {
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -294,24 +378,22 @@ div {
           justify-content: space-between;
           margin-bottom: 23px;
           div {
-            
             img {
               width: 223px;
               height: 132px;
             }
-            &:nth-child(1){
+            &:nth-child(1) {
               width: 60%;
             }
-             &:nth-child(2){
+            &:nth-child(2) {
               width: 40%;
             }
           }
-          div.clearedright{
-           
+          div.clearedright {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            p{
+            p {
               margin-bottom: 25px;
             }
           }
@@ -320,10 +402,7 @@ div {
     }
   }
   .copy {
-    position: fixed;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
+    text-indent: 30%;
     font-family: MicrosoftYaHei;
     font-size: 10px;
     font-weight: normal;
@@ -331,6 +410,7 @@ div {
     line-height: 16px;
     letter-spacing: 1px;
     color: #535353;
+    margin-top: 40px;
   }
 }
 </style>
