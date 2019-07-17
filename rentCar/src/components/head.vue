@@ -7,7 +7,7 @@
     <div class="headright">
       <a href="#" @click.prevent="fn">
         <img src="./../assets/head/wei.png" alt />
-        <span class="wei">2</span>
+        <span class="wei">{{this.$store.state.breaklist.length}}</span>
       </a>
       <router-link to="/home/shouli">
         <img src="./../assets/head/xiaoxi.png" alt />
@@ -39,13 +39,20 @@ export default {
   },
   methods: {
     fn(){
+ 
       this.weishow=true;
       this.$store.commit("change", this.weishow);
+     
     }
   },
   components: {},
 
   mounted() {
+       this.$store.dispatch('saveFrom');
+
+  //  setInterval(()=>{
+  //      this.$store.dispatch('saveFrom');
+  //   },300000)
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;

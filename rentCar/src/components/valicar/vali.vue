@@ -57,11 +57,11 @@
           </select>
         </li>
         <li>
-          换车人：
+          还车人：
           <input type="text" class="info" v-model="user" />
         </li>
         <li>
-          换车人手机号：
+          还车人手机号：
           <input type="text" class="info" v-model="userphone" />
         </li>
       </ul>
@@ -166,8 +166,8 @@ export default {
     };
   },
   methods: {
-    fn(){
-      console.log('我即将结算');
+    fn() {
+      console.log("我即将结算");
     }
   },
   components: {},
@@ -184,7 +184,9 @@ export default {
         (this.handling - 0)
       );
     }
-  }
+  },
+  
+
 };
 </script >
 
