@@ -44,7 +44,7 @@
           </el-menu-item>
         </el-submenu>
         <el-menu-item index="3">
-          <router-link to="#3">
+          <router-link to="/home/registration">
             <span>
               <img src="./../assets/aside-left/3-3.png" alt />
               <img src="./../assets/aside-left/2-3.png" alt />
@@ -52,7 +52,7 @@
           </router-link>
         </el-menu-item>
         <el-menu-item index="4">
-          <router-link to="#2">
+          <router-link to="/home/member">
             <span>
               <img src="./../assets/aside-left/3-4.png" alt />
               <img src="./../assets/aside-left/2-1.png" alt />
