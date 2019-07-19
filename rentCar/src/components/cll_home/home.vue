@@ -22,7 +22,7 @@
             <span>{{item.date | dates}}</span>&nbsp;
             <span>{{item.date | times}}</span>&nbsp;
             <span>订单号</span>&nbsp;
-            <span>{{item.order}}2</span>
+            <span>{{item.order}}</span>
             <span>{{item.carNum}}</span>
             <span>{{item.detail}}</span>
           </li>

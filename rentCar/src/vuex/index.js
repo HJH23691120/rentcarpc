@@ -11,6 +11,8 @@
      phoneshow: false,
      recharge: false,
      breaklist:[],
+     clreadlist:[],
+     id:"172.25.1.194:8080"
    },
   
    mutations: {
@@ -30,15 +32,24 @@
    actions:{
     saveFrom(context){
       Axios({
-        url:"http://172.25.1.194:8080/pcshouye/weizhang"
-      }).then(res => {
-        console.log(res.data);
+        url:`http://${context.state.id}/pcshouye/weizhang`
+      }).then(res => {       
         context.state.breaklist=res.data;
       })
       .catch(err => {
-        console.log(err);
+     console.log(err)
       });
     },
-   
+   clreadFrom(context){
+      Axios({
+        url:`http://${context.state.id}/order/yijiesuanorders`
+      }).then(res => {       
+        console.log(res.data)
+        context.state.clreadlist=res.data;
+      })
+      .catch(err => {
+     console.log(err)
+      });
+    },
    }
  })

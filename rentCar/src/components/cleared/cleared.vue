@@ -21,41 +21,14 @@
         <span>退款人</span>
       </header>
       <ul class="list" @click="open($event)">
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>豫A 12345</span>
-          <span>222元</span>
-          <span>2019-7-10</span>
-          <span>员工1</span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>豫A 12345</span>
-          <span>222元</span>
-          <span>2019-7-10</span>
-          <span>员工1</span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>豫A 12345</span>
-          <span>222元</span>
-          <span>2019-7-10</span>
-          <span>员工1</span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>豫A 12345</span>
-          <span>222元</span>
-          <span>2019-7-10</span>
-          <span>员工1</span>
+        <li v-for="(its,ind) in this.$store.state.clreadlist" :key="ind">
+          <span>{{its.username}}</span>
+          <span>{{its.orderNumber}}</span>
+          <span>{{its.hire}}</span>
+          <span>{{its.plateNumber}}</span>
+          <span>{{its.refund}}</span>
+          <span>{{its.refundTime | dates}}</span>
+          <span>{{its.refundPeople}}</span>
         </li>
       </ul>
     </div>
@@ -73,31 +46,40 @@ export default {
       },
       value1: "",
       value2: "",
-      clearedshow:false
+      clearedshow: false
     };
   },
-
+filters: {
+    dates(val) {
+      let date = new Date(val);
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      month = String(month).padStart(2, "0");
+      day = String(day).padStart(2, "0");
+      return year + "-" + month + "-" + day;
+    }},
   methods: {
     data() {
       console.log("我是用来提交时间的");
     },
     open(e) {
-    
-
-   
-      console.log(e.target)
-        //防止父元素ul也触发事件
-        console.log(1);
-        if (e.target.parentNode.localName == "li") {
-          this.clearedshow = true;
-          console.log(2);
-          this.$store.commit("open", this.clearedshow);
-       
-       
-      };
+     
+      //防止父元素ul也触发事件
+     
+      console.log(e.target.parentNode.children[1].value)
+      if (e.target.parentNode.localName == "li") {
+        // let child=e.target.parentNode.child
+        this.clearedshow = true;
+        console.log(2);
+        this.$store.commit("open", this.clearedshow);
+      }
     }
   },
-  components: {}
+  components: {},
+  mounted() {
+    this.$store.dispatch("clreadFrom");
+  }
 };
 </script >
 
