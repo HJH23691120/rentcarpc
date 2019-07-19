@@ -66,20 +66,17 @@ export default {
     fn() {
       //这是提交按钮得函数
       if (this.user && this.pass) {
-
         this.$axios
           .post(
-            "http://172.25.1.194:8080/user/login?",
+            `http://${this.$store.state.id}/admin/login?`,
             this.$qs.stringify({
-              params: {
                 name: this.name,
                 password: this.password
-              }
             })
           )
           .then(res => {
-            console.log(res.data);
-            if (res.data) {
+            console.log(res.data[0].result);
+            if (res.data[0].result) {
               this.$router.push('/home')
             }
           })
@@ -96,7 +93,7 @@ export default {
     },
     useverify() {
       //这是用户名验证的函数
-      let user = /^1[356789]\d{9}/;
+      let user = /^[a-z]+$/i;
       if (user.test(this.name)) {
         this.userright = "√";
         this.user = true;

@@ -191,6 +191,7 @@ export default {
         span {
           flex: 1;
           text-align: center;
+          font-size: 12px;
           &:nth-child(1) {
             span {
               display: block;
