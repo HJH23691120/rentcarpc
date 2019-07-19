@@ -20,7 +20,7 @@
           <span>2019-07-10</span>
           <span>123456784012</span>
           <span>
-              <span>去结算</span><span>修改</span>
+              <span>去结算</span>
           </span>
         </li>
         <li>
@@ -31,7 +31,7 @@
           <span>2019-07-10</span>
           <span>123456784012</span>
           <span>
-              <span>去结算</span><span>修改</span>
+              <span>去结算</span>
           </span>
         </li>
         <li>
@@ -42,7 +42,7 @@
           <span>2019-07-10</span>
           <span>123456784012</span>
           <span>
-              <span>去结算</span><span>修改</span>
+              <span>去结算</span>
           </span>
         </li>
         <li>
@@ -53,7 +53,7 @@
           <span>2019-07-10</span>
           <span>123456784012</span>
           <span>
-              <span>去结算</span><span>修改</span>
+              <span>去结算</span>
           </span>
         </li>
       </ul>
@@ -151,9 +151,7 @@ export default {
                 &:nth-child(1){
                     width: 31.9%;min-width: 46px;background-color: #ffcc00;color: #333333;margin-right: 5px;
                 }
-                &:nth-child(2){
-                    width: 25%;;min-width: 36px;background-color: #009944;color: #fff;
-                }
+               
             }
           }
         }

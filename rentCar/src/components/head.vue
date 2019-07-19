@@ -34,14 +34,15 @@ export default {
     return {
       year: "",
       time: "",
-      weishow:false,
+     
     };
   },
+  
   methods: {
     fn(){
  
-      this.weishow=true;
-      this.$store.commit("change", this.weishow);
+    
+      this.$store.commit("change");
      
     }
   },

@@ -33,7 +33,7 @@
       <div class="clearedbox">
         <p class="top">
           订单号：
-          <span>123564893215</span>
+          <span>{{$store.state.cleardinfo.orderNumber }}</span>
         </p>
         <span @click="clearedclose" class="close">
           <img src="./../../assets/masking/guanbi.png" alt />
@@ -46,122 +46,122 @@
             <div class="clearedright">
               <p>
                 还车时间：
-                <span></span>
+                <span>{{$store.state.cleardinfo.carTime | dates}}</span>
               </p>
               <p>
                 车辆是否损坏：
-                <span></span>
+                <span>{{$store.state.cleardinfo.failure }}</span>
               </p>
               <p>
                 还车门店：
-                <span></span>
+                <span>{{$store.state.cleardinfo.carStores }}</span>
               </p>
             </div>
           </li>
           <li>
             <div>
               租车人：
-              <span></span>
+              <span>{{$store.state.cleardinfo.username }}</span>
             </div>
             <div>
               使用费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.royalties }}</span>
             </div>
           </li>
           <li>
             <div>
               手机号：
-              <span></span>
+              <span>{{$store.state.cleardinfo.phoneNo }}</span>
             </div>
             <div>
               基本保险费费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.premium }}</span>
             </div>
           </li>
           <li>
             <div>
               租借时间：
-              <span></span>
+              <span>{{$store.state.cleardinfo.collectionTime |dates }}</span>
             </div>
             <div>
               超时费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.overtime }}</span>
             </div>
           </li>
           <li>
             <div>
               租借车：
-              <span></span>
+              <span>{{$store.state.cleardinfo.leaseType}}</span>
             </div>
             <div>
               损坏费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.damageFee }}</span>
             </div>
           </li>
           <li>
             <div>
               租借类型：
-              <span></span>
+              <span>{{$store.state.cleardinfo.leaseType }}</span>
             </div>
             <div>
               违章处理费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.IllegalProcessing }}</span>
             </div>
           </li>
           <li>
             <div>
               租借门店：
-              <span></span>
+              <span>{{$store.state.cleardinfo.rentalStores }}</span>
             </div>
             <div>
               参与优惠活动：
-              <span></span>
+              <span>{{$store.state.cleardinfo.shiFoWeiZhang }}</span>
             </div>
           </li>
           <li>
             <div>
               租赁方式：
-              <span></span>
+              <span>{{$store.state.cleardinfo.hire }}</span>
             </div>
             <div>
               平价币抵扣：
-              <span></span>
+              <span>{{$store.state.cleardinfo.pingJiaBiZheKou}}</span>
             </div>
           </li>
           <li>
             <div>
               购买保险：
-              <span></span>
+              <span>{{$store.state.cleardinfo.buyInsurance }}</span>
             </div>
             <div>
               积分抵扣：
-              <span></span>
+              <span>{{$store.state.cleardinfo.integral }}</span>
             </div>
           </li>
           <li>
             <div>
               支付押金：
-              <span></span>
+              <span>{{$store.state.cleardinfo.cashPledge }}</span>
             </div>
           </li>
           <li>
             <div>
               支付金额：
-              <span></span>
+              <span>{{$store.state.cleardinfo.payMoney}}</span>
             </div>
             <div>
               退款金额：
-              <span></span>
+              <span>{{$store.state.cleardinfo.refund }}</span>
             </div>
           </li>
           <li>
             <div>
               支付类型：
-              <span></span>
+              <span>{{$store.state.cleardinfo.paymentType }}</span>
             </div>
             <div>
               退款人：
-              <span></span>
+              <span>{{$store.state.cleardinfo.refundPeople }}</span>
             </div>
           </li>
         </ul>
