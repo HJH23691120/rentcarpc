@@ -22,6 +22,13 @@ export default {
   },
   mounted() {
     this.$chart.line1("chart1", this.topData);
+    this.$axios.get(
+      `http://${this.$store.stat}/pcshouye/todaycarstate`
+      ).then((res)=>{
+      console.log(res);
+    }).catch((err)=>{
+      throw err
+    })
     // this.$chart.line2('chart1');
   },
   methods: {},
@@ -32,6 +39,7 @@ export default {
 <style scoped lang="less">
 .chart1 {
   position: relative;
+  flex: 1;
   p {
     position: absolute;
     top: 10px;
@@ -50,7 +58,7 @@ export default {
   }
   #chart1 {
     min-width: 342px;
-    width: 38%;
+    width: 100%;
     height: 100%;
     min-height: 191px;
     background: white;

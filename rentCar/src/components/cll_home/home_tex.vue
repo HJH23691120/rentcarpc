@@ -89,6 +89,19 @@ export default {
   data() {
     return {};
   },
+  mounter(){
+                    //车辆信息 http://172.25.1.194:8080/
+                    //车辆信息 http://172.25.1.194:8080/?tdsourcetag=s_pcqq_aiomsg
+    this.$axios.get('http://172.25.1.194:8080/?tdsourcetag=s_pcqq_aiomsg').then(
+      (res)=>{
+        console.log(res)
+      }
+    ).catch(
+      (err)=>{
+        throw err
+      }
+    )
+  },
   methods: {},
   components: {
     chartOne,
@@ -109,21 +122,24 @@ export default {
   .tex_top {
     width: 100%;
     min-width: 800px;
-    height: 100%;
+    // height: 100%;
     min-height: 191px;
-    margin-bottom: 32px;
+    margin-bottom: 60px;
     display: flex;
-    flex: 2;
+    // flex: 2;
     flex-direction: row;
     .tex_top_r {
       margin-left: 40px;
       width: 60%;
       min-width: 470px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .tex_top_new {
         min-height: 89px;
         height: 100px;
         background: white;
-        margin-bottom: 24px;
+        // margin-bottom: 24px;
         padding: 0 27px 0 11px;
         h2 {
           overflow: hidden;
@@ -191,7 +207,7 @@ export default {
     }
   }
   .tex_bottom {
-    flex: 6;
+    // flex: 6;
     width: 100%;
     min-width: 800px;
     height: 370px;
@@ -201,9 +217,10 @@ export default {
     .tex_bottom__r{
       padding: 13px 25px 7px 13px;
       margin-left: 34px;
-      width: 30%;
+      width: 35%;
       min-width: 271px;
       height: 370px;
+      box-sizing: border-box;
       background: white;
       h2{
         padding: 4px 0;

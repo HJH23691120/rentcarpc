@@ -16,73 +16,15 @@
           <img src="./../../assets/masking/guanbi.png" alt />
         </span>
         <ul class="infolist">
-          <li>
+          <li v-for="(item,index) in this.$store.state.breaklist" :key="index">
             <span class="newinfo">新</span>
 
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
+            <span>{{item.date | dates}}</span>&nbsp;
+            <span>{{item.date | times}}</span>&nbsp;
             <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span class="newinfo">新</span>
-
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
-          </li>
-          <li>
-            <span>2019-7-10</span>&nbsp;
-            <span>16:03</span>&nbsp;
-            <span>订单号</span>&nbsp;
-            <span>123456789012</span>
-            <span>下豫A12345</span>
-            <span>车在金水区xx路口发生闯红灯违章行为</span>
+            <span>{{item.order}}2</span>
+            <span>{{item.carNum}}</span>
+            <span>{{item.detail}}</span>
           </li>
         </ul>
       </div>
@@ -226,10 +168,41 @@
       </div>
     </div>
     <div class="masking" v-show="$store.state.phoneshow">
-      <div class="clearedbox"></div>
+      <div class="phonebox">
+        <button @click="phonechange">
+          <img src="./../../assets/masking/guanbi.png" alt />
+        </button>
+        <div>
+          <p>
+            原手机号：
+            <input type="text" />
+          </p>
+          <p>
+            新手机号：
+            <input type="text" />
+          </p>
+          <p>
+            <span>确定</span>
+          </p>
+        </div>
+      </div>
     </div>
     <div class="masking" v-show="$store.state.recharge">
-      <div class="clearedbox"></div>
+      <div class="rechargebox">
+        <button @click="recharge">
+          <img src="./../../assets/masking/guanbi.png" alt />
+        </button>
+        <div>
+          <p>
+            金额：
+            <input type="text" />
+          </p>
+
+          <p>
+            <span>充值</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -243,7 +216,8 @@ export default {
   data() {
     return {
       weishow: false,
-      clearedshow: false
+      clearedshow: false,
+     
     };
   },
   mounted(){
@@ -263,10 +237,30 @@ export default {
       this.$store.commit("recharge");
     }
   },
+  filters: {
+    dates(val) {
+      let date = new Date(val);
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      month = String(month).padStart(2, "0");
+      day = String(day).padStart(2, "0");
+      return year + "-" + month + "-" + day;
+    },
+    times(val) {
+      let date = new Date(val);
+      let hour = date.getHours();
+      let min = date.getMinutes();
+      hour = String(hour).padStart(2, "0");
+      min = String(min).padStart(2, "0");
+      return (hour + ":" + min)
+    }
+  },
   components: {
     Head,
     Leftaside
-  }
+  },
+ 
 };
 </script>
 
@@ -399,6 +393,88 @@ export default {
             p {
               margin-bottom: 25px;
             }
+          }
+        }
+      }
+    }
+    .phonebox {
+      width: 51.5%;
+      height: 28.5%;
+      background: #fff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        background: none;
+        border: none;
+        outline: none;
+        width: 17px;
+        height: 17px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 38px;
+        input {
+          border: none;
+          outline: none;
+          border-bottom: 1px solid #000;
+        }
+        &:nth-child(3) {
+          text-align: center;
+          span {
+            display: inline-block;
+            width: 84px;
+            height: 21px;
+            line-height: 22px;
+            background-color: #f9c307;
+            border-radius: 11px;
+            font-size: 14px;
+            color: #333;
+          }
+        }
+      }
+    }
+    .rechargebox {
+      width: 51.5%;
+      height: 20.9%;
+      background: #fff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        background: none;
+        border: none;
+        outline: none;
+        width: 17px;
+        height: 17px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 38px;
+        input {
+          border: none;
+          outline: none;
+          border-bottom: 1px solid #000;
+        }
+        &:nth-child(2) {
+          text-align: center;
+          span {
+            display: inline-block;
+            width: 84px;
+            height: 21px;
+            line-height: 22px;
+            background-color: #f9c307;
+            border-radius: 11px;
+            font-size: 14px;
+            color: #333;
           }
         }
       }

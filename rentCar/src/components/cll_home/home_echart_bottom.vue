@@ -49,7 +49,7 @@ export default {
 <style scoped lang="less">
 .chart2 {
   position: relative;
-  width: 60%;
+  width: 65%;
   #chart2 {
     min-width: 548px;
     // width: 548px;

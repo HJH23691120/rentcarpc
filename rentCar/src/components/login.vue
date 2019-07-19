@@ -66,21 +66,18 @@ export default {
     fn() {
       //这是提交按钮得函数
       if (this.user && this.pass) {
-
         this.$axios
           .post(
             "http://172.25.1.194:8080/user/login?",
             this.$qs.stringify({
-              params: {
-                name: this.name,
-                password: this.password
-              }
+              name: this.name,
+              password: this.password
             })
           )
           .then(res => {
             console.log(res.data);
             if (res.data) {
-              this.$router.push('/home')
+              this.$router.push("/home");
             }
           })
           .catch(err => {

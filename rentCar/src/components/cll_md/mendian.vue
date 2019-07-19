@@ -129,7 +129,7 @@ export default {
       width: 100%;
       box-sizing: border-box;
       min-width: 850px;
-      height: 272px;
+      height: 290px;
       background: white;
     }
   }
@@ -137,22 +137,22 @@ export default {
     margin-top: 42px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     li {
       position: relative;
-      width: 272px;
-      min-width: 260px;
+      width: 260px;
       height: 236px;
       box-sizing: border-box;
       color: white;
+      background-size: 140%;
       &:nth-of-type(1) {
-        background: url("../../assets/mendian/c-1.png") repeat-x;
+        background: url("../../assets/mendian/c-1.png");
       }
       &:nth-of-type(2) {
-        background: url("../../assets/mendian/c-2.png") repeat-x;
+        background: url("../../assets/mendian/c-2.png");
       }
       &:nth-of-type(3) {
-        background: url("../../assets/mendian/c-3.png") repeat-x;
+        background: url("../../assets/mendian/c-3.png");
       }
       .bg_ {
         background: rgba(0, 0, 0, 0.2);

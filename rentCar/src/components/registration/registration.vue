@@ -93,7 +93,7 @@ export default {
       min-width: 342px;
       height: 30px;
       padding-left: 40px;
-      background: url("../../assets/search/search.png") no-repeat 5% center,
+      background: url("../../assets/search/search.png") no-repeat 4% center,
         #fbf5e0;
       margin-right: 18px;
       border-radius: 15px;
