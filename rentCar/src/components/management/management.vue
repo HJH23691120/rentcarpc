@@ -105,13 +105,16 @@ export default {
         }
       }
       if (e.target.parentNode.localName === "span") {
+        console.log( e.target.parentNode.children[1])
         //  全选功能函数
-        if (!this.alls) {
-          e.target.setAttribute("class", "light");
-          this.alls = true; //全选的判定条件
-        } else {
-          e.target.setAttribute("class", "");
-          this.alls = false;
+        if (e.target === e.target.parentNode.children[0]) {
+          if (!this.alls) {
+            e.target.setAttribute("class", "light");
+            this.alls = true; //全选的判定条件
+          } else {
+            e.target.setAttribute("class", "");
+            this.alls = false;
+          }
         }
       }
     },
@@ -141,7 +144,7 @@ export default {
         console.log("我即将执行删除功能函数");
         let lis = document
           .getElementsByClassName("lists")[0]
-          .getElementsByTagName("li");  
+          .getElementsByTagName("li");
         for (let i = 0; i < lis.length; i++) {
           if (lis[i].children[0].children[0].hasAttribute("class")) {
             // this.list.splice(i, 1);
