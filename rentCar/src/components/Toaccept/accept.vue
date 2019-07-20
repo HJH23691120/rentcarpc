@@ -269,13 +269,15 @@ export default {
 </script >
 
 <style scoped lang='less'>
-.accept {
-  overflow: auto;
+div{
+   height: 74%;
+  // min-width: 519px;
+  .accept {
+  overflow: hidden;
   margin: 34px auto 0;
   width: 94%;
   min-width: 900px;
-  min-height: 583px;
-  height: 77%;
+ height: 100%;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -291,7 +293,10 @@ export default {
     color: #333333;
   }
   .acceptlist {
+    overflow: hidden;
     margin: 26px 65px 0 28px;
+    display: flex;
+    flex-direction: column;
     header {
       height: 38px;
       line-height: 38px;
@@ -315,6 +320,9 @@ export default {
       }
     }
     .list {
+      flex: 1;
+      overflow: auto;
+      height: 400px;
       li {
         height: 38px;
         line-height: 38px;
@@ -357,14 +365,16 @@ export default {
   margin: 34px auto 0;
   width: 94%;
   min-width: 905px;
-  min-height: 583px;
-  height: 77%;
+
+  height: 100%;
   display: flex;
   flex-direction: row;
   div {
     background: #fff;
     min-width: 408px;
     width: 45.3%;
+    height: 100%;
+    overflow: auto;
     box-shadow: 0px 0px 12px 1px rgba(21, 21, 21, 0.23);
     padding: 26px 0;
     box-sizing: border-box;
@@ -502,5 +512,6 @@ export default {
       }
     }
   }
+}
 }
 </style>

@@ -194,11 +194,11 @@
         <div>
           <p>
             金额：
-            <input type="text" />
+            <input type="text" v-model="money"/>
           </p>
 
           <p>
-            <span>充值</span>
+            <span @click="cz">充值</span>
           </p>
         </div>
       </div>
@@ -216,7 +216,7 @@ export default {
       weishow: false,
       clearedshow: false,
       oldphone: "",
-      newphone: ""
+      newphone: "",money:''
     };
   },
   methods: {
@@ -244,7 +244,7 @@ export default {
           if(res.data.result){
              this.$store.commit("pchange");
              this.oldphone='';
-             this.newphone='';
+             this.newphone=''; 
             alert("修改成功")
 
           }else{
@@ -255,6 +255,14 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    cz(){
+      if(this.money!==''){
+        alert('充值成功');
+         this.$store.commit("recharge");
+      }else{
+        alert('金额不能为空')
+      }
     }
   },
   filters: {
@@ -363,7 +371,7 @@ export default {
     }
     .clearedbox {
       width: 59%;
-      height: 90%;
+      height: 80%;
       padding: 28px 34px 0 45px;
       box-sizing: border-box;
       background: #fff;
@@ -393,7 +401,7 @@ export default {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          margin-bottom: 23px;
+          margin-bottom: 8px;
           div {
             img {
               width: 223px;

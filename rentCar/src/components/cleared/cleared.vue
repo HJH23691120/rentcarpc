@@ -92,8 +92,7 @@ export default {
 .accept {
   margin: 34px auto 0;
   width: 94%;
-  min-width: 900px;
-  min-height: 583px;
+  min-width: 900px;                     
   height: 77%;
   background: #fff;
   display: flex;

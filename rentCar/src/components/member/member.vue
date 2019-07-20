@@ -17,10 +17,12 @@
             <span>小白</span>
             <p>
               <span>
-                <img src="./../../assets/member/pingjiabi.png" alt />{{userinfo.integral}}
+                <img src="./../../assets/member/pingjiabi.png" alt />
+                {{userinfo.integral}}
               </span>
               <span>
-                <img src="./../../assets/member/jifen.png" alt />{{userinfo.pingjiaGold}}
+                <img src="./../../assets/member/jifen.png" alt />
+                {{userinfo.pingjiaGold}}
               </span>
             </p>
           </div>
@@ -85,11 +87,12 @@ export default {
   data() {
     return {
       phone: "",
-      userinfo:'',
-      userzuce:'',
-      usercz:'',
+      userinfo: "",
+      userzuce: "",
+      usercz: ""
     };
-  }, filters: {
+  },
+  filters: {
     dates(val) {
       let date = new Date(val);
       let year = date.getFullYear();
@@ -110,10 +113,10 @@ export default {
       })
         .then(res => {
           console.log(res.data);
-          this.userinfo=res.data[0]
-          this.usercz=res.data[1]
-         
-          this.userzuce=res.data[2]
+          this.userinfo = res.data[0];
+          this.usercz = res.data[1];
+
+          this.userzuce = res.data[2];
         })
         .catch(err => {
           console.log(err);
@@ -145,7 +148,7 @@ export default {
     box-shadow: 0px 0px 12px 1px rgba(21, 21, 21, 0.23);
   }
   .header {
-    height: 68px;
+    min-height: 68px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -194,7 +197,7 @@ export default {
   .memberinfo {
     box-shadow: none;
     margin-top: 30px;
-    height: 592px;
+    flex: 1;
     font-size: 18px;
     font-weight: 500;
     line-height: 16px;
@@ -279,8 +282,8 @@ export default {
       }
       .footinfo {
         margin-top: 26px;
-        min-height: 292px;
-        height: 57.5%;
+        overflow: auto;
+        height: 48%;
         background: #fff;
         padding: 24px 22px 0;
         header {
