@@ -2,7 +2,6 @@
  import Vuex from 'vuex'
  import Axios from 'axios'
  Vue.prototype.$axios = Axios
-
  Vue.use(Vuex)
  export default new Vuex.Store({
    state: {
@@ -15,7 +14,10 @@
      id: "172.25.1.194:8080",
      cleardinfo: {},
      refund: '',
-     refundPeople:'',
+     refundPeople: '',
+     acceptList:[],
+    
+   
    },
 
    mutations: {
@@ -34,7 +36,6 @@
      cleardinfo(state, v) {
        state.cleardinfo = v
      },
-   
    },
    actions: {
      saveFrom(context) {
@@ -51,13 +52,20 @@
        Axios({
            url: `http://${context.state.id}/order/yijiesuanorders`
          }).then(res => {
-           console.log(res.data)
            context.state.clreadlist = res.data;
          })
          .catch(err => {
            console.log(err)
          });
      },
-
+     acceptFrom(context) {
+       Axios({
+         url: `http://${context.state.id}/order/daijiesuanorders`
+       }).then(res => {
+         context.state.acceptList=res.data;
+       }).catch(err => {
+         console.log(err)
+       });
+     },
    }
  })

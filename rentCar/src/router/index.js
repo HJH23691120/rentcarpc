@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Home from '@/components/cll_home/home'
 import Login from '../components/login.vue'
 import accept from '@/components/Toaccept/accept'//待结算
-import vali from '@/components/valicar/vali.vue'//验车
+
 import shouli from '@/components/shouli/shouli.vue'//受理
 import management from '@/components/management/management.vue'//受理
 import cleared from '@/components/cleared/cleared.vue'//结算
@@ -36,10 +36,6 @@ export default new Router({
           path:'accept',//待结算
           name:'Accept',
           component:accept
-        },{
-          path:'vali',//验车
-          name:'Vali',
-          component:vali
         },
         {
           path:'shouli',//验车

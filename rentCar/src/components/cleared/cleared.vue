@@ -64,21 +64,16 @@ export default {
       console.log("我是用来提交时间的");
     },
     open(e) {
-      //防止父元素ul也触发事件
-
       if (e.target.parentNode.localName == "li") {
         // let child=e.target.parentNode.child
-        console.log(e.target.parentNode.children[1].innerText);
         this.$axios(`http://${this.$store.state.id}/order/getorderbyid?`, {
           params: {
             orderNum: e.target.parentNode.children[1].innerText
           }
         })
           .then(res => {
-            console.log(res.data);
             this.$store.commit("open");
             this.$store.commit("cleardinfo", res.data);
-          
           })
           .catch(err => {
             console.log(err);

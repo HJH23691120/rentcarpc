@@ -18,7 +18,6 @@
         <ul class="infolist">
           <li v-for="(item,index) in this.$store.state.breaklist" :key="index">
             <span class="newinfo">新</span>
-
             <span>{{item.date | dates}}</span>&nbsp;
             <span>{{item.date | times}}</span>&nbsp;
             <span>订单号</span>&nbsp;
@@ -175,14 +174,14 @@
         <div>
           <p>
             原手机号：
-            <input type="text" />
+            <input type="text" v-model="oldphone" />
           </p>
           <p>
             新手机号：
-            <input type="text" />
+            <input type="text" v-model="newphone" />
           </p>
           <p>
-            <span>确定</span>
+            <span @click="amend">确定</span>
           </p>
         </div>
       </div>
@@ -216,7 +215,8 @@ export default {
     return {
       weishow: false,
       clearedshow: false,
-     
+      oldphone: "",
+      newphone: ""
     };
   },
   methods: {
@@ -231,6 +231,30 @@ export default {
     },
     recharge() {
       this.$store.commit("recharge");
+    },
+    amend() {
+      this.$axios(`http://${this.$store.state.id}/admin/adminchangetel?F`, {
+        params: {
+          oldTel: this.oldphone,
+          newTel: this.newphone
+        }
+      })
+        .then(res => {
+          console.log(res.data.result);
+          if(res.data.result){
+             this.$store.commit("pchange");
+             this.oldphone='';
+             this.newphone='';
+            alert("修改成功")
+
+          }else{
+            alert('原用户手机号错误')
+          }
+
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   filters: {
@@ -249,15 +273,14 @@ export default {
       let min = date.getMinutes();
       hour = String(hour).padStart(2, "0");
       min = String(min).padStart(2, "0");
-      return (hour + ":" + min)
+      return hour + ":" + min;
     }
   },
   components: {
     Head,
     HomeTex,
     Leftaside
-  },
- 
+  }
 };
 </script>
 

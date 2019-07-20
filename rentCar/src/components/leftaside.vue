@@ -7,7 +7,7 @@
     <div class="list">
       <el-menu>
         <el-menu-item index="1">
-          <router-link to="#5">
+          <router-link to="/home/#5">
             <span>
               <img src="./../assets/aside-left/3.png" alt />
               <img src="./../assets/aside-left/3-1.png" alt />
@@ -36,9 +36,7 @@
           <el-menu-item index="2-2">
             <router-link to="/home/accept">待结算</router-link>
           </el-menu-item>
-          <el-menu-item index="2-3">
-            <router-link to="/home/vali">验车 结算</router-link>
-          </el-menu-item>
+          
           <el-menu-item index="2-4">
             <router-link to="/home/cleared">已结算</router-link>
           </el-menu-item>
@@ -60,7 +58,7 @@
           </router-link>
         </el-menu-item>
         <el-menu-item index="5">
-          <router-link to="#1">
+          <router-link to="/home/#1">
             <span>
               <img src="./../assets/aside-left/3-5.png" alt />
               <img src="./../assets/aside-left/5.png" alt />
