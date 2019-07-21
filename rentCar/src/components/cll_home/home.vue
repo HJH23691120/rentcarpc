@@ -18,7 +18,6 @@
         <ul class="infolist">
           <li v-for="(item,index) in this.$store.state.breaklist" :key="index">
             <span class="newinfo">新</span>
-
             <span>{{item.date | dates}}</span>&nbsp;
             <span>{{item.date | times}}</span>&nbsp;
             <span>订单号</span>&nbsp;
@@ -33,7 +32,7 @@
       <div class="clearedbox">
         <p class="top">
           订单号：
-          <span>123564893215</span>
+          <span>{{$store.state.cleardinfo.orderNumber }}</span>
         </p>
         <span @click="clearedclose" class="close">
           <img src="./../../assets/masking/guanbi.png" alt />
@@ -46,122 +45,122 @@
             <div class="clearedright">
               <p>
                 还车时间：
-                <span></span>
+                <span>{{$store.state.cleardinfo.carTime | dates}}</span>
               </p>
               <p>
                 车辆是否损坏：
-                <span></span>
+                <span>{{$store.state.cleardinfo.failure }}</span>
               </p>
               <p>
                 还车门店：
-                <span></span>
+                <span>{{$store.state.cleardinfo.carStores }}</span>
               </p>
             </div>
           </li>
           <li>
             <div>
               租车人：
-              <span></span>
+              <span>{{$store.state.cleardinfo.username }}</span>
             </div>
             <div>
               使用费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.royalties }}</span>
             </div>
           </li>
           <li>
             <div>
               手机号：
-              <span></span>
+              <span>{{$store.state.cleardinfo.phoneNo }}</span>
             </div>
             <div>
               基本保险费费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.premium }}</span>
             </div>
           </li>
           <li>
             <div>
               租借时间：
-              <span></span>
+              <span>{{$store.state.cleardinfo.collectionTime |dates }}</span>
             </div>
             <div>
               超时费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.overtime }}</span>
             </div>
           </li>
           <li>
             <div>
               租借车：
-              <span></span>
+              <span>{{$store.state.cleardinfo.leaseType}}</span>
             </div>
             <div>
               损坏费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.damageFee }}</span>
             </div>
           </li>
           <li>
             <div>
               租借类型：
-              <span></span>
+              <span>{{$store.state.cleardinfo.leaseType }}</span>
             </div>
             <div>
               违章处理费：
-              <span></span>
+              <span>{{$store.state.cleardinfo.IllegalProcessing }}</span>
             </div>
           </li>
           <li>
             <div>
               租借门店：
-              <span></span>
+              <span>{{$store.state.cleardinfo.rentalStores }}</span>
             </div>
             <div>
               参与优惠活动：
-              <span></span>
+              <span>{{$store.state.cleardinfo.shiFoWeiZhang }}</span>
             </div>
           </li>
           <li>
             <div>
               租赁方式：
-              <span></span>
+              <span>{{$store.state.cleardinfo.hire }}</span>
             </div>
             <div>
               平价币抵扣：
-              <span></span>
+              <span>{{$store.state.cleardinfo.pingJiaBiZheKou}}</span>
             </div>
           </li>
           <li>
             <div>
               购买保险：
-              <span></span>
+              <span>{{$store.state.cleardinfo.buyInsurance }}</span>
             </div>
             <div>
               积分抵扣：
-              <span></span>
+              <span>{{$store.state.cleardinfo.integral }}</span>
             </div>
           </li>
           <li>
             <div>
               支付押金：
-              <span></span>
+              <span>{{$store.state.cleardinfo.cashPledge }}</span>
             </div>
           </li>
           <li>
             <div>
               支付金额：
-              <span></span>
+              <span>{{$store.state.cleardinfo.payMoney}}</span>
             </div>
             <div>
               退款金额：
-              <span></span>
+              <span>{{$store.state.cleardinfo.refund }}</span>
             </div>
           </li>
           <li>
             <div>
               支付类型：
-              <span></span>
+              <span>{{$store.state.cleardinfo.paymentType }}</span>
             </div>
             <div>
               退款人：
-              <span></span>
+              <span>{{$store.state.cleardinfo.refundPeople }}</span>
             </div>
           </li>
         </ul>
@@ -175,14 +174,14 @@
         <div>
           <p>
             原手机号：
-            <input type="text" />
+            <input type="text" v-model="oldphone" />
           </p>
           <p>
             新手机号：
-            <input type="text" />
+            <input type="text" v-model="newphone" />
           </p>
           <p>
-            <span>确定</span>
+            <span @click="amend">确定</span>
           </p>
         </div>
       </div>
@@ -195,11 +194,11 @@
         <div>
           <p>
             金额：
-            <input type="text" />
+            <input type="text" v-model="money"/>
           </p>
 
           <p>
-            <span>充值</span>
+            <span @click="cz">充值</span>
           </p>
         </div>
       </div>
@@ -217,7 +216,8 @@ export default {
     return {
       weishow: false,
       clearedshow: false,
-     
+      oldphone: "",
+      newphone: "",money:''
     };
   },
   mounted(){
@@ -235,6 +235,38 @@ export default {
     },
     recharge() {
       this.$store.commit("recharge");
+    },
+    amend() {
+      this.$axios(`http://${this.$store.state.id}/admin/adminchangetel?F`, {
+        params: {
+          oldTel: this.oldphone,
+          newTel: this.newphone
+        }
+      })
+        .then(res => {
+          console.log(res.data.result);
+          if(res.data.result){
+             this.$store.commit("pchange");
+             this.oldphone='';
+             this.newphone=''; 
+            alert("修改成功")
+
+          }else{
+            alert('原用户手机号错误')
+          }
+
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    cz(){
+      if(this.money!==''){
+        alert('充值成功');
+         this.$store.commit("recharge");
+      }else{
+        alert('金额不能为空')
+      }
     }
   },
   filters: {
@@ -253,14 +285,13 @@ export default {
       let min = date.getMinutes();
       hour = String(hour).padStart(2, "0");
       min = String(min).padStart(2, "0");
-      return (hour + ":" + min)
+      return hour + ":" + min;
     }
   },
   components: {
     Head,
     Leftaside
-  },
- 
+  }
 };
 </script>
 
@@ -343,7 +374,7 @@ export default {
     }
     .clearedbox {
       width: 59%;
-      height: 90%;
+      height: 80%;
       padding: 28px 34px 0 45px;
       box-sizing: border-box;
       background: #fff;
@@ -373,7 +404,7 @@ export default {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          margin-bottom: 23px;
+          margin-bottom: 8px;
           div {
             img {
               width: 223px;

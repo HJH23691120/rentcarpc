@@ -36,9 +36,7 @@
           <el-menu-item index="2-2">
             <router-link to="/home/accept">待结算</router-link>
           </el-menu-item>
-          <el-menu-item index="2-3">
-            <router-link to="/home/vali">验车 结算</router-link>
-          </el-menu-item>
+          
           <el-menu-item index="2-4">
             <router-link to="/home/cleared">已结算</router-link>
           </el-menu-item>

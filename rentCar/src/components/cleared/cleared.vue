@@ -45,11 +45,10 @@ export default {
         }
       },
       value1: "",
-      value2: "",
-      clearedshow: false
+      value2: ""
     };
   },
-filters: {
+  filters: {
     dates(val) {
       let date = new Date(val);
       let year = date.getFullYear();
@@ -58,21 +57,27 @@ filters: {
       month = String(month).padStart(2, "0");
       day = String(day).padStart(2, "0");
       return year + "-" + month + "-" + day;
-    }},
+    }
+  },
   methods: {
     data() {
       console.log("我是用来提交时间的");
     },
     open(e) {
-     
-      //防止父元素ul也触发事件
-     
-      console.log(e.target.parentNode.children[1].value)
       if (e.target.parentNode.localName == "li") {
         // let child=e.target.parentNode.child
-        this.clearedshow = true;
-        console.log(2);
-        this.$store.commit("open", this.clearedshow);
+        this.$axios(`http://${this.$store.state.id}/order/getorderbyid?`, {
+          params: {
+            orderNum: e.target.parentNode.children[1].innerText
+          }
+        })
+          .then(res => {
+            this.$store.commit("open");
+            this.$store.commit("cleardinfo", res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
     }
   },
@@ -87,8 +92,7 @@ filters: {
 .accept {
   margin: 34px auto 0;
   width: 94%;
-  min-width: 900px;
-  min-height: 583px;
+  min-width: 900px;                     
   height: 77%;
   background: #fff;
   display: flex;

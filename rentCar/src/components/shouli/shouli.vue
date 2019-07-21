@@ -11,50 +11,14 @@
         <span>订单号</span>
         <span>操作</span>
       </header>
-      <ul class="list">
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>大众斯柯达</span>
-          <span>2019-07-10</span>
-          <span>123456784012</span>
-          <span>
-            <span @click=" masking=true">受理</span>
-            <span>删除</span>
-          </span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>大众斯柯达</span>
-          <span>2019-07-10</span>
-          <span>123456784012</span>
-          <span>
-            <span>受理</span>
-            <span>删除</span>
-          </span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>大众斯柯达</span>
-          <span>2019-07-10</span>
-          <span>123456784012</span>
-          <span>
-            <span>受理</span>
-            <span>删除</span>
-          </span>
-        </li>
-        <li>
-          <span>张三</span>
-          <span>18336093166</span>
-          <span>日租</span>
-          <span>大众斯柯达</span>
-          <span>2019-07-10</span>
-          <span>123456784012</span>
+      <ul class="list" @click="show($event)">
+        <li v-for="(item,index) in list " :key="index">
+          <span>{{item.username}}</span>
+          <span>{{item.phoneNo}}</span>
+          <span>{{item.hire}}</span>
+          <span>{{item.vehicle}}</span>
+          <span>{{item.collectionTime}}</span>
+          <span>{{item.orderNumber}}</span>
           <span>
             <span>受理</span>
             <span>删除</span>
@@ -63,6 +27,9 @@
       </ul>
     </div>
     <div class="accepmasking" v-show="masking">
+      <button @click="close">
+        <img src="./../../assets/masking/guanbi.png" alt />
+      </button>
       <div class="left">
         <header>
           <span class="list">待受理列表</span>
@@ -70,20 +37,20 @@
             <img src="./../../assets/search/fanhui.png" alt />
           </span>
           订单号
-          <span>123564893215</span>
+          <span>{{secondlist.orderNumber}}</span>
         </header>
         <ul class="acceptlist">
           <li>
             驾驶员：
-            <span></span>
+            <span>{{secondlist.username}}</span>
           </li>
           <li>
             手机号：
-            <span></span>
+            <span>{{secondlist.phoneNp}}</span>
           </li>
           <li>
             驾驶证号：
-            <span></span>
+            <span>{{secondlist.drivingLicence}}</span>
           </li>
           <li>
             <span>
@@ -91,50 +58,81 @@
               <span>驾驶证正面</span>
             </span>
             <span>
-              <img src="./../../assets/search/zj-1.jpg" alt /><span>驾驶证反面</span>
+              <img src="./../../assets/search/zj-1.jpg" alt />
+              <span>驾驶证反面</span>
             </span>
           </li>
           <li>
             紧急联系人：
-            <span></span>
+            <span>{{secondlist.emergencyContact}}</span>
           </li>
           <li>
             紧急联系人手机号：
-            <span></span>
+            <span>{{secondlist.jinjishouji}}</span>
           </li>
           <li>
             购买保险：
-            <span></span>
+            <span>{{secondlist.buyInsurance}}</span>
           </li>
           <li>
             支付押金：
-            <span></span>
+            <span>{{secondlist.cashPledge}}</span>
           </li>
           <li>
             支付金额：
-            <span></span>
+            <span>{{secondlist.payMoney}}</span>
           </li>
           <li>
             支付类型：
-            <span></span>
+            <span>{{secondlist.paymentType}}</span>
           </li>
         </ul>
       </div>
       <div class="right">
         <header>
-          租借时间：<span>2019-07-09</span>~<span>2019-07-16</span>
+          租借时间：
+          <span>{{secondlist.carTime | dates}}</span>~
+          <span>{{secondlist.collectionTime | dates}}</span>
         </header>
         <ul class="acceptlist">
-          <li><img src="./../../assets/search/pic-1.jpg" alt=""></li>
-          <li>租界车：<span></span></li>
-          <li>租界类型：<span></span></li>
-          <li>租界门店：<span></span></li>
-          <li>租赁方式：<span></span></li>
-          <li>提车人：<input type="text" class="info"></li>
-          <li>提车时间：<input type="text" class="info"></li>
-          <li>还车时间：<input type="text" class="info"></li>
-          <li>受理人：<input type="text" class="info"></li>
-          <li><span class="btn" @click="btn">受&emsp;&emsp;&emsp;&emsp;理</span></li>
+          <li>
+            <img src="./../../assets/search/pic-1.jpg" alt />
+          </li>
+          <li>
+            租借车：
+            <span>{{secondlist.vehicle}}</span>
+          </li>
+          <li>
+            租借类型：
+            <span>{{secondlist.leaseType}}</span>
+          </li>
+          <li>
+            租借门店：
+            <span>{{secondlist.rentalStores}}</span>
+          </li>
+          <li>
+            租赁方式：
+            <span>{{secondlist.hire}}</span>
+          </li>
+          <li>
+            提车人：
+            <input type="text" class="info" />
+          </li>
+          <li>
+            提车时间：
+            <input type="text" class="info" />
+          </li>
+          <li>
+            还车时间：
+            <input type="text" class="info" />
+          </li>
+          <li>
+            受理人：
+            <input type="text" class="info" />
+          </li>
+          <li>
+            <span class="btn" @click="btn">受&emsp;&emsp;&emsp;&emsp;理</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -145,16 +143,81 @@
 export default {
   data() {
     return {
-      masking:false
+      masking: false,
+      list: [],
+      secondlist: {}
     };
   },
-  methods: {
-    btn(){
-      console.log('我即将提交')
-      this.masking=false;
+  filters: {
+    dates(val) {
+      let date = new Date(val);
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      month = String(month).padStart(2, "0");
+      day = String(day).padStart(2, "0");
+      return year + "-" + month + "-" + day;
     }
   },
-  components: {}
+  methods: {
+    btn() {
+      console.log("我即将提交");
+    },
+    close() {
+      this.masking = !this.masking;
+    },
+    show(e) {
+      if (e.target.parentNode.localName === "span") {
+        console.log();
+        if (e.target === e.target.parentNode.children[0]) {
+          this.$axios(`http://${this.$store.state.id}/order/shouliliebiao?`, {
+            params: {
+              orderNum: e.target.parentNode.parentNode.children[5].innerText
+            }
+          })
+            .then(res => {
+              this.secondlist = res.data;
+            })
+            .catch(err => {
+              throw err;
+            });
+          this.masking = !this.masking;
+        } else if (e.target === e.target.parentNode.children[1]) {
+          var lis = e.target.parentNode.parentNode.parentNode.children;
+          for (let i = 0; i < lis.length; i++) {
+            if (lis[i] === e.target.parentNode.parentNode) {
+            
+              this.$axios(`http://${this.$store.state.id}/order/deletebyid?`, {
+                params: {
+                  orderNum: e.target.parentNode.parentNode.children[5].innerText
+                }
+              })
+                .then(res => {
+                  console.log(res.data.result);
+                  if (res.data.result) {
+                    alert("删除成功");
+                  }
+                })
+                .catch(err => {
+                  throw err;
+                });
+              this.list.splice(i, 1);
+            }
+          }
+        }
+      }
+    }
+  },
+  components: {},
+  mounted() {
+    this.$axios(`http://${this.$store.state.id}/order/weishouliorders`)
+      .then(res => {
+        this.list = res.data;
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
 };
 </script >
 
@@ -170,6 +233,7 @@ export default {
   flex-direction: column;
   box-shadow: 0px 0px 12px 1px rgba(21, 21, 21, 0.23);
   position: relative;
+
   .accepttop {
     margin: 37px 0 0 28px;
     font-family: MicrosoftYaHei;
@@ -182,6 +246,9 @@ export default {
   }
   .acceptlist {
     margin: 26px 65px 0 28px;
+
+    display: flex;
+    flex-direction: column;
     header {
       height: 38px;
       line-height: 38px;
@@ -198,13 +265,13 @@ export default {
         text-align: center;
         display: inline-block;
         &:nth-child(1) {
-          width: 5.6%;
-          min-width: 48px;
           text-align: left;
         }
       }
     }
     .list {
+      flex: 1;
+      overflow: auto;
       li {
         height: 38px;
         line-height: 38px;
@@ -225,15 +292,13 @@ export default {
           }
 
           &:nth-child(7) {
-            min-width: 144px;
-            width: 16.9%;
-
             span {
               height: 14px;
               line-height: 14px;
               border-radius: 6px;
               font-size: 12px;
               text-align: center;
+              cursor: pointer;
               &:nth-child(1) {
                 width: 25%;
                 min-width: 36px;
@@ -265,7 +330,16 @@ export default {
     box-sizing: border-box;
     position: absolute;
     top: 0;
-
+    button {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: none;
+      border: none;
+      outline: none;
+      width: 17px;
+      height: 17px;
+    }
     div {
       min-width: 450px;
       width: 50%;
@@ -299,7 +373,7 @@ export default {
             display: flex;
             flex-direction: row;
             span {
-              img{
+              img {
                 width: 120px;
                 height: 82px;
               }
@@ -307,7 +381,7 @@ export default {
               display: flex;
               flex-direction: column;
               align-items: center;
-              span{
+              span {
                 margin-top: 10px;
               }
             }
@@ -315,36 +389,36 @@ export default {
         }
       }
     }
-    div.right{
-.acceptlist{
-  padding: 0;
-  li{
-    img{
-      width: 223px;
-      height: 132px;
-    }
-     .info {
-          border: none;
-          outline: none;
-          width: 156px;
-          border-bottom: 1px solid #000;
-        }
-         .btn {
-          display: block;
-         
-          width: 220px;
-          height: 33px;
-          background-color: #f1f1f1;
-          border-radius: 17px;
-          text-align: center;
-          font-size: 16px;
+    div.right {
+      .acceptlist {
+        padding: 0;
+        li {
+          img {
+            width: 223px;
+            height: 132px;
+          }
+          .info {
+            border: none;
+            outline: none;
+            width: 156px;
+            border-bottom: 1px solid #000;
+          }
+          .btn {
+            display: block;
 
-          line-height: 33px;
-          letter-spacing: 3px;
-          color: #999999;
+            width: 220px;
+            height: 33px;
+            background-color: #f1f1f1;
+            border-radius: 17px;
+            text-align: center;
+            font-size: 16px;
+
+            line-height: 33px;
+            letter-spacing: 3px;
+            color: #999999;
+          }
         }
-  }
-}
+      }
     }
   }
 }

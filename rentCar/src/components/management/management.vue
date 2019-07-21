@@ -5,7 +5,7 @@
         <span>
           <img src="./../../assets/search/search.png" />
         </span>
-        <input type="text" placeholder="输入驾驶员姓名/手机号" v-model="phone" />
+        <input type="text" placeholder="输入驾驶员姓名/手机号" v-model="phone" @input="recover" />
       </div>
       <button @click="query">订单查询</button>
     </div>
@@ -13,13 +13,12 @@
       <header>
         近期订单
         <button>已逾期</button>
-        <select>
+        <select @click="removeall($event)">
           <option value disabled selected hidden>批量操作</option>
-          <option value="受理">受理</option>
           <option value="删除">删除</option>
         </select>
       </header>
-      <div class="listtitle">
+      <div class="listtitle" @click="all($event)">
         <span>
           <span></span>姓名
         </span>
@@ -31,23 +30,22 @@
         <span>订单状态</span>
         <span>操作</span>
       </div>
-      <ul class="lists">
-        <li>
+      <ul class="lists" @click="select($event)">
+        <li v-for="(item,index) in list " :key="index">
           <span>
-            <span></span>姓名
+            <span></span>
+            {{item.username}}
           </span>
-          <span>手机号</span>
-          <span>租赁方式</span>
-          <span>车型</span>
-          <span>取车时间</span>
-          <span>还车时间</span>
-          <span>订单状态</span>
+          <span>{{item.phoneNo}}</span>
+          <span>{{item.hire}}</span>
+          <span>{{item.vehicle}}</span>
+          <span>{{item.collectionTime | dates}}</span>
+          <span>{{item.carTime | dates}}</span>
+          <span>{{item.status}}</span>
           <span>
-            <span>受理</span>
             <span>删除</span>
           </span>
         </li>
-       
       </ul>
     </div>
   </div>
@@ -57,15 +55,129 @@
 export default {
   data() {
     return {
-      phone: ""
+      phone: "",
+      list: [],
+      alls: false,
+      arr: []
     };
   },
   methods: {
     query() {
-      console.log("我要查询");
+      console.log(this.phone);
+      this.arr = this.list;
+      if (this.phone === "") {
+        alert("不能输入为空");
+      } else {
+        this.list = [];
+        console.log();
+        let temp = true;
+        for (let i = 0; i < this.arr.length; i++) {
+          if (
+            this.arr[i].phoneNo === this.phone ||
+            this.arr[i].username === this.phone
+          ) {
+            this.list.push(this.arr[i]);
+            return false;
+          } else {
+            temp = false;
+          }
+        }
+        if (!temp) {
+          alert("用户名不存在");
+        }
+      }
+    },
+    recover() {
+      if (this.arr.length !== 0 && this.phone === "") {
+        this.list = this.arr;
+      }
+    },
+    all(e) {
+      let lis = document
+        .getElementsByClassName("lists")[0]
+        .getElementsByTagName("li");
+      for (let i = 0; i < lis.length; i++) {
+        let span = lis[i].children[0].children[0];
+        if (!this.alls) {
+          span.setAttribute("class", "light");
+        } else {
+          span.removeAttribute("class");
+        }
+      }
+      if (e.target.parentNode.localName === "span") {
+        console.log( e.target.parentNode.children[1])
+        //  全选功能函数
+        if (e.target === e.target.parentNode.children[0]) {
+          if (!this.alls) {
+            e.target.setAttribute("class", "light");
+            this.alls = true; //全选的判定条件
+          } else {
+            e.target.setAttribute("class", "");
+            this.alls = false;
+          }
+        }
+      }
+    },
+    select(e) {
+      if (e.target.parentNode.localName === "span") {
+        //选择功能的方法
+        if (
+          e.target.parentNode === e.target.parentNode.parentNode.children[0]
+        ) {
+          if (e.target.hasAttribute("class")) {
+            e.target.removeAttribute("class");
+          } else {
+            e.target.setAttribute("class", "light");
+          }
+        } else {
+          var lis = e.target.parentNode.parentNode.parentNode.children;
+          for (let i = 0; i < lis.length; i++) {
+            if (lis[i] === e.target.parentNode.parentNode) {
+              this.list.splice(i, 1);
+            }
+          }
+        }
+      }
+    },
+    removeall(e) {
+      if (e.target.value === "删除") {
+        console.log("我即将执行删除功能函数");
+        let lis = document
+          .getElementsByClassName("lists")[0]
+          .getElementsByTagName("li");
+        for (let i = 0; i < lis.length; i++) {
+          if (lis[i].children[0].children[0].hasAttribute("class")) {
+            // this.list.splice(i, 1);
+            lis[i].parentNode.removeChild(lis[i]);
+            console.log(this.list);
+            console.log(this.list.length);
+            // lis[i].children[0].children[0].removeAttribute("class")
+          }
+        }
+      }
     }
   },
-  components: {}
+  components: {},
+  mounted() {
+    this.$axios(`http://${this.$store.state.id}/order/recentOrder`)
+      .then(res => {
+        this.list = res.data;
+      })
+      .catch(err => {
+        throw err;
+      });
+  },
+  filters: {
+    dates(val) {
+      let date = new Date(val);
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      month = String(month).padStart(2, "0");
+      day = String(day).padStart(2, "0");
+      return year + "-" + month + "-" + day;
+    }
+  }
 };
 </script >
 
@@ -130,6 +242,8 @@ export default {
     }
   }
   .mentinfo {
+    display: flex;
+    flex-direction: column;
     div {
       background: none;
       box-shadow: none;
@@ -168,6 +282,9 @@ export default {
     .listtitle {
       margin-top: 30px;
       display: flex;
+      .light {
+        background: #ffcc00;
+      }
       span {
         flex: 1;
         text-align: center;
@@ -184,6 +301,8 @@ export default {
       }
     }
     .lists {
+      flex: 1;
+      overflow: auto;
       margin-top: 25px;
       li {
         margin-bottom: 27px;
@@ -200,6 +319,9 @@ export default {
               border-radius: 50%;
               border: 1px solid #666666;
               float: left;
+            }
+            .light {
+              background: #ffcc00;
             }
           }
           &:nth-child(8) {

@@ -6,7 +6,7 @@ import HomeTex from '../components/cll_home/home_tex.vue'
 import Mendian from '../components/cll_md/mendian.vue'
 
 import accept from '@/components/Toaccept/accept'//待结算
-import vali from '@/components/valicar/vali.vue'//验车
+
 import shouli from '@/components/shouli/shouli.vue'//受理
 import management from '@/components/management/management.vue'//受理
 import cleared from '@/components/cleared/cleared.vue'//结算
