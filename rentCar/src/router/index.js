@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/cll_home/home'
 import Login from '../components/login.vue'
+import HomeTex from '../components/cll_home/home_tex.vue'
+import Mendian from '../components/cll_md/mendian.vue'
+
 import accept from '@/components/Toaccept/accept'//待结算
 
 import shouli from '@/components/shouli/shouli.vue'//受理
@@ -31,28 +33,43 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home,children:[
-         {
-          path:'accept',//待结算
-          name:'Accept',
-          component:accept
+      component: Home, children: [
+        {
+          path: "homeTex",
+          name: 'HomeTex',
+          component: HomeTex
         },
         {
-          path:'shouli',//验车
-          name:'Shouli',
-          component:shouli
+          path: "mendian",
+          name: 'Mendian',
+          component: Mendian
         },
-       
         {
-          path:'cleared',//验车
-          name:'Cleared',
-          component:cleared
+          path: 'accept',//待结算
+          name: 'Accept',
+          component: accept
         },
-       
         {
-          path:'management',//验车
-          name:'Management',
-          component:management
+          path: 'vali',//验车
+          name: 'Vali',
+          component: vali
+        },
+        {
+          path: 'shouli',//验车
+          name: 'Shouli',
+          component: shouli
+        },
+
+        {
+          path: 'cleared',//验车
+          name: 'Cleared',
+          component: cleared
+        },
+
+        {
+          path: 'management',//验车
+          name: 'Management',
+          component: management
         },
         {
           path:'registration',//验车

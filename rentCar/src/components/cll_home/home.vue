@@ -208,7 +208,8 @@
 
 <script>
 import Head from "../head";
-import HomeTex from "./home_echart_top";
+
+// 左边侧边栏
 import Leftaside from "./../leftaside.vue";
 export default {
   data() {
@@ -218,6 +219,9 @@ export default {
       oldphone: "",
       newphone: "",money:''
     };
+  },
+  mounted(){
+    this.$router.push('/home/homeTex');
   },
   methods: {
     close() {
@@ -286,7 +290,6 @@ export default {
   },
   components: {
     Head,
-    HomeTex,
     Leftaside
   }
 };

@@ -7,7 +7,7 @@
     <div class="list">
       <el-menu>
         <el-menu-item index="1">
-          <router-link to="/home/#5">
+          <router-link to="/home/homeTex">
             <span>
               <img src="./../assets/aside-left/3.png" alt />
               <img src="./../assets/aside-left/3-1.png" alt />
@@ -58,7 +58,7 @@
           </router-link>
         </el-menu-item>
         <el-menu-item index="5">
-          <router-link to="/home/#1">
+          <router-link to="/home/mendian">
             <span>
               <img src="./../assets/aside-left/3-5.png" alt />
               <img src="./../assets/aside-left/5.png" alt />
